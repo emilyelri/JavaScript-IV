@@ -26,8 +26,9 @@ class Instructor extends Person {
   }
   adjustGrade(student) {
       let response = `Previous grade: ${student.grade}. Updated grade: `;
-      let newGrade = student.grade + Math.floor((Math.random() * (201-student.grade) - 100));
+      let newGrade = student.grade + Math.floor((Math.random() * (50) - 25));
         if (newGrade < 0) {newGrade = 0};
+        if (newGrade > 100) {newGrade = 100};
       response += `${newGrade}.`
       student.grade = newGrade;
       return response;
@@ -117,6 +118,9 @@ console.log(susan.debugsCode(emily, ".this"));
 console.log('');
 console.log('Stretch Goals:');
 console.log('');
+console.log(fred.adjustGrade(emily));
+console.log(fred.adjustGrade(emily));
+console.log(fred.adjustGrade(emily));
 console.log(fred.adjustGrade(emily));
 console.log(fred.adjustGrade(emily));
 console.log(emily.graduate());
