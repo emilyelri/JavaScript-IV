@@ -1,59 +1,59 @@
 // CODE here for your Lambda Classes
 
-function GameObject(character) {
-    this.createdAt = character.createdAt;
-    this.name = character.name;
-    this.dimensions = character.dimensions;
-    };
-  
-    GameObject.prototype.destroy = function() {
-      return(`${this.name} was removed from the game.`);
-  };
+class GameObject {
+    constructor(character) {
+        this.createdAt = character.createdAt;
+        this.name = character.name;
+        this.dimensions = character.dimensions;
+    }
+    destroy() {
+        return(`${this.name} was removed from the game.`);
+    }
+}
 
-  function CharacterStats(character) {
-    GameObject.call(this, character);
-    this.healthPoints = character.healthPoints;
+class CharacterStats extends GameObject {
+    constructor(character) {
+        super(character);
+        this.healthPoints = character.healthPoints;
   }
-  
-  CharacterStats.prototype = Object.create(GameObject.prototype);
-  
-  CharacterStats.prototype.takeDamage = function() {
+  takeDamage() {
     return(`${this.name} took damage.`);
   }
-  
-  function Humanoid(character) {
-    CharacterStats.call(this, character);
-    this.team = character.team;
-    this.weapons = character.weapons;
-    this.language = character.language;
-  }
-  
-  Humanoid.prototype = Object.create(CharacterStats.prototype);
-  
-  Humanoid.prototype.greet = function() {
-    return(`${this.name} offers a greeting in ${this.language}.`);
-  }
+}
 
-  function Villain(character) {
-    Humanoid.call(this, character);
+class Humanoid extends CharacterStats {
+    constructor(character) {
+        super(character);
+        this.team = character.team;
+        this.weapons = character.weapons;
+        this.language = character.language;
+    }
+    greet() {
+        return(`${this.name} offers a greeting in ${this.language}.`);
+    }
+}
+
+class Villain extends Humanoid {
+    constructor(character) {
+    super(character);
     armor: character.armor;
     evilness: character.evilness;
-  }
-  Villain.prototype = Object.create(Humanoid.prototype);
-
-  Villain.prototype.laugh = function() {
-    return(`It is I, ${this.name}! Muawahahaha!`)};
-
-
-  function Hero(character) {
-      Humanoid.call(this, character);
-      cape: character.cape;
-      goodness: character.goodness;
     }
-    Hero.prototype = Object.create(Humanoid.prototype);
-  
-    Hero.prototype.grandEntrance = function() {
-      return(`Never fear, ${this.name}'s here!`)};
+    laugh() {
+    return(`It is I, ${this.name}! Muawahahaha!`);
+}
+}
+
+class Hero extends Humanoid {
+    constructor(character) {
+        super(character);
+        cape: character.cape;
+        goodness: character.goodness;
+    }
+    grandEntrance() {
+        return(`Never fear, ${this.name}'s here!`);
+    }
+}
 
 
     const mage = new Humanoid({
