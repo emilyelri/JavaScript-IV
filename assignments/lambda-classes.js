@@ -1,156 +1,75 @@
 // CODE here for your Lambda Classes
 
-class GameObject {
-    constructor(character) {
-        this.createdAt = character.createdAt;
-        this.name = character.name;
-        this.dimensions = character.dimensions;
+class Person {
+    constructor(person) {
+        this.name = person.name;
+        this.age = person.age;
+        this.location = person.location;
     }
-    destroy() {
-        return(`${this.name} was removed from the game.`);
+    speak() {
+        return(`Hello, my name is ${this.name}, I am from ${this.location}.`);
     }
 }
 
-class CharacterStats extends GameObject {
-    constructor(character) {
-        super(character);
-        this.healthPoints = character.healthPoints;
+class Instructor extends Person {
+    constructor(person) {
+        super(person);
+        this.specialty = person.specialty;
+        this.favLanguage = person.favLanguage;
+        this.catchPhrase = person.catchPhrase;
   }
-  takeDamage() {
-    return(`${this.name} took damage.`);
+  demo(subject) {
+    return `Today we are learning about ${subject}.`;
+  }
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}.`
   }
 }
 
-class Humanoid extends CharacterStats {
-    constructor(character) {
-        super(character);
-        this.team = character.team;
-        this.weapons = character.weapons;
-        this.language = character.language;
-    }
-    greet() {
-        return(`${this.name} offers a greeting in ${this.language}.`);
-    }
+class Student extends Person {
+    constructor(person) {
+        super(person);
+        this.previousBackground = person.previousBackground;
+        this.className = person.className;
+        this.favSubjects = person.favSubjects;
+  }
+  listsSubjects() {
+        this.favSubjects.array.forEach(element => {
+            console.log(element);
+        });
+  }
+  PRAssignment(subject) {
+      return `${this.name} has submitted a PR for ${subject}.`;
+  }
+  sprintChallenge(subject) {
+    return `${this.name} has begun sprint challenge on ${subject}.`;
+  }
 }
 
-class Villain extends Humanoid {
-    constructor(character) {
-    super(character);
-    armor: character.armor;
-    evilness: character.evilness;
-    }
-    laugh() {
-    return(`It is I, ${this.name}! Muawahahaha!`);
-}
-}
-
-class Hero extends Humanoid {
-    constructor(character) {
-        super(character);
-        cape: character.cape;
-        goodness: character.goodness;
-    }
-    grandEntrance() {
-        return(`Never fear, ${this.name}'s here!`);
-    }
+class TL extends Instructor {
+    constructor(person) {
+        super(person);
+        this.gradClassName = person.gradClassName;
+        this.favInstructor = person.favInstructor;
+  }
+  standUp(slackChannel) {
+      return `${this.name} announces to ${slackChannel}, @channel study time!`;
+  }
+  debugsCode(student, subject) {
+      return `${this.name} debugs ${student.name}'s code on ${subject}.`;
+  }
 }
 
 
-    const mage = new Humanoid({
-      createdAt: new Date(),
-      dimensions: {
-        length: 2,
-        width: 1,
-        height: 1,
-      },
-      healthPoints: 5,
-      name: 'Bruce',
-      team: 'Mage Guild',
-      weapons: [
-        'Staff of Shamalama',
-      ],
-      language: 'Common Tongue',
-    });
-  
-    const swordsman = new Humanoid({
-      createdAt: new Date(),
-      dimensions: {
-        length: 2,
-        width: 2,
-        height: 2,
-      },
-      healthPoints: 15,
-      name: 'Sir Mustachio',
-      team: 'The Round Table',
-      weapons: [
-        'Giant Sword',
-        'Shield',
-      ],
-      language: 'Common Tongue',
-    });
-  
-    const archer = new Humanoid({
-      createdAt: new Date(),
-      dimensions: {
-        length: 1,
-        width: 2,
-        height: 4,
-      },
-      healthPoints: 10,
-      name: 'Lilith',
-      team: 'Forest Kingdom',
-      weapons: [
-        'Bow',
-        'Dagger',
-      ],
-      language: 'Elvish',
-    });
 
-    const evilDude = new Villain({
-        createdAt: new Date(),
-        dimensions: {
-          length: 2,
-          width: 2,
-          height: 10,
-        },
-        healthPoints: 250,
-        name: 'Lawrence',
-        team: 'Darkness',
-        weapons: [
-          'Staff',
-        ],
-        language: 'Evil',
-        armor: 'Golden',
-        evilness: 'Maximum',
-      });
-    
-      const superDude = new Hero({
-        createdAt: new Date(),
-        dimensions: {
-          length: 2,
-          width: 2,
-          height: 11,
-        },
-        healthPoints: 300,
-        name: 'Frederick',
-        team: 'Light',
-        weapons: [
-          'Sword',
-        ],
-        language: 'Goodness',
-        cape: 'Fabulous',
-        goodness: 'Supreme',
-      });
-  
-    console.log(mage.createdAt); // Today's date
-    console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-    console.log(swordsman.healthPoints); // 15
-    console.log(mage.name); // Bruce
-    console.log(swordsman.team); // The Round Table
-    console.log(mage.weapons); // Staff of Shamalama
-    console.log(archer.language); // Elvish
-    console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-    console.log(mage.takeDamage()); // Bruce took damage.
-    console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-    console.log(evilDude.laugh());
-    console.log(superDude.grandEntrance());
+
+console.log();
+console.log();
+console.log();
+console.log();
+console.log();
+console.log();
+console.log();
+console.log();
+console.log();
+console.log();
