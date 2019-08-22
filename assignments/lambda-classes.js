@@ -24,6 +24,14 @@ class Instructor extends Person {
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}.`
   }
+  adjustGrade(student) {
+      let response = `Previous grade: ${student.grade}. Updated grade: `;
+      let newGrade = student.grade + Math.floor((Math.random() * (201-student.grade) - 100));
+        if (newGrade < 0) {newGrade = 0};
+      response += `${newGrade}.`
+      student.grade = newGrade;
+      return response;
+  }
 }
 
 class Student extends Person {
@@ -32,6 +40,7 @@ class Student extends Person {
         this.previousBackground = person.previousBackground;
         this.className = person.className;
         this.favSubjects = person.favSubjects;
+        this.grade = person.grade;
   }
   listsSubjects() {
     return this.favSubjects.toString();
@@ -41,6 +50,13 @@ class Student extends Person {
   }
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}.`;
+  }
+  graduate() {
+      if (this.grade >= 70) {
+        return `${this.name} has graduated! Yay!`;
+      } else {
+          return `${this.name} has not graduated.`;
+      }
   }
 }
 
@@ -73,7 +89,8 @@ const fred = new Instructor({
     age: 25,
     previousBackground: "some CS semesters",
     className: "web23",
-    favSubjects: ["JS", "Python", "C#"]
+    favSubjects: ["JS", "Python", "C#"],
+    grade: 90
   });
 
   const susan = new TL({
@@ -97,3 +114,9 @@ console.log(emily.sprintChallenge("Advanced JavaScript"));
 console.log(susan.speak());
 console.log(susan.standUp("web23-susan"));
 console.log(susan.debugsCode(emily, ".this"));
+console.log('');
+console.log('Stretch Goals:');
+console.log('');
+console.log(fred.adjustGrade(emily));
+console.log(fred.adjustGrade(emily));
+console.log(emily.graduate());
