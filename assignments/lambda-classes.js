@@ -34,9 +34,7 @@ class Student extends Person {
         this.favSubjects = person.favSubjects;
   }
   listsSubjects() {
-        this.favSubjects.array.forEach(element => {
-            console.log(element);
-        });
+    return this.favSubjects.toString();
   }
   PRAssignment(subject) {
       return `${this.name} has submitted a PR for ${subject}.`;
@@ -60,16 +58,42 @@ class TL extends Instructor {
   }
 }
 
+const fred = new Instructor({
+    name: 'Fred',
+    location: 'Bedrock',
+    age: 37,
+    favLanguage: 'JavaScript',
+    specialty: 'Front-end',
+    catchPhrase: `Don't forget the homies.`
+  });
 
+  const emily = new Student({
+    name: 'Emily',
+    location: 'Manchester',
+    age: 25,
+    previousBackground: "some CS semesters",
+    className: "web23",
+    favSubjects: ["JS", "Python", "C#"]
+  });
 
+  const susan = new TL({
+    name: 'Susan',
+    location: 'Anchorage',
+    age: 29,
+    favLanguage: 'Python',
+    specialty: 'Back-end',
+    catchPhrase: `It's study time!`,
+    gradClassName: 'web15',
+    favInstructor: 'Brit'
+  });
 
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
+console.log(fred.speak());
+console.log(fred.demo("React"));
+console.log(fred.grade(emily, "JavaScript VI"));
+console.log(emily.speak());
+console.log(emily.listsSubjects());
+console.log(emily.PRAssignment("Constructors"));
+console.log(emily.sprintChallenge("Advanced JavaScript"));
+console.log(susan.speak());
+console.log(susan.standUp("web23-susan"));
+console.log(susan.debugsCode(emily, ".this"));
