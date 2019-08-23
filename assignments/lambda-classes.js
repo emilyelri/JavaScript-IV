@@ -91,7 +91,7 @@ const fred = new Instructor({
     previousBackground: "some CS semesters",
     className: "web23",
     favSubjects: ["JS", "Python", "C#"],
-    grade: 90
+    grade: 70
   });
 
   const susan = new TL({
@@ -118,8 +118,6 @@ console.log(susan.debugsCode(emily, ".this"));
 console.log('');
 console.log('Stretch Goals:');
 console.log('');
-console.log(fred.adjustGrade(emily));
-console.log(fred.adjustGrade(emily));
 console.log(fred.adjustGrade(emily));
 console.log(fred.adjustGrade(emily));
 console.log(fred.adjustGrade(emily));
